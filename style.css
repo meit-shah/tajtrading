@@ -20,10 +20,18 @@ body, html {
     left: 16px;
   }
   
-  .bottomleft {
+  .topright{
+      position:absolute;
+      top:0;
+      right:16px;
+  }
+
+  .bottomcenter {
     position: absolute;
     bottom: 0;
-    left: 16px;
+    left:30%;
+    right:25%;
+    margin:0 auto;
   }
   
   .middle {
