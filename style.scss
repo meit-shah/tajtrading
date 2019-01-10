@@ -1,0 +1,131 @@
+$white : #fff;
+$full: 100%;
+$font-Courier:"Courier New", Courier, monospace;
+$bg-img: 'images/background.jpg';
+
+@mixin display($val) {
+    @if $val == none{
+        display:none;
+    }
+    @else{
+        display:block;
+    }
+}
+
+@mixin position($val){
+    @if $val == absolute {
+        position: absolute;
+    }
+    @else if $val == relative{
+        position: relative;
+    }
+    @else{
+        position: static;
+    }
+}
+
+@mixin text-align($val){
+    @if $val == center {
+        text-align: center;
+    }
+    @else if $val == right{
+        text-align: right;
+    }
+    @else{
+        text-align: left;
+    }
+}
+
+body, html {
+    height: $full;
+    margin: 0;
+  }
+
+  .tint{
+    width: $full;
+    height:$full;
+    background: rgba(0,0,0,0.72);
+  }
+  
+  .bgimg {
+    background-image: url($bg-img);
+    height: $full;
+    background-position: center;
+    background-size: cover;
+    @include position(relative);
+    color: $white;
+    font-family: $font-Courier;
+    font-size: 25px;
+  }
+
+  .center{
+    @include text-align(center);
+  }
+
+  .topzero{
+    @include position(absolute);
+    top: 0;
+  }
+
+  .topleft{
+    @extend .topzero;
+    left: 16px;
+  }
+  
+  .topright{
+    @extend .topzero;
+    right:16px;
+  }
+
+  .topright p a{
+    color: $white;
+    text-decoration: underline;
+  }
+
+  .bottomcenter {
+    @include position(absolute);
+    bottom: 0;
+    left:30%;
+    right:25%;
+    margin:0 auto;
+  }
+  
+  .middle {
+    @include position(absolute);
+    @include text-align(center);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  hr {
+    margin: auto;
+    width: 40%;
+  }
+
+  .mb-email p{
+    @include display(none);
+  }
+  
+  /* media queries here */
+  @media(max-width:667px){
+    .topright{
+        @include display(none);
+    }
+    .bottomcenter{
+     @include position(absolute);
+     left:20%;
+     right:20%;
+    }
+    .mb-email p{
+     @include display(block); 
+     @include position(absolute);
+     color:$white;
+     top: 0;
+     right:16px;
+    }
+    .mb-email p a{
+     color:$white;
+     text-transform: capitalize;
+    }
+  }
